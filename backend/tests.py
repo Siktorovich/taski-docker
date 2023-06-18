@@ -10,7 +10,7 @@ class TaskiAPITestCase(TestCase):
 
     def test_list_exists(self):
         """Проверка доступности списка задач."""
-        response = self.guset_client.get('/api/tasks/')
+        response = self.guest_client.get('/api/tasks/')
         self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_task_creation(self):
@@ -19,4 +19,4 @@ class TaskiAPITestCase(TestCase):
         response = self.guest_client.post('/api/tasks/', data=data)
         self.assertEqual(response.status_code, HTTPStatus.CREATED)
         self.assertEqual(response.status_code, HTTPStatus.OK)
-        self.assertTrue(models.Tssk.objects.filter(title='Test').exists())
+        self.assertTrue(models.Task.objects.filter(title='Test').exists())
